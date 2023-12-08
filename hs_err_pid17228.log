@@ -16,7 +16,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -Dij.spring.boot.application.process=8c3438af-0704-4f5c-b7b2-125d420e9312 -Dmanagement.endpoints.jmx.exposure.include=* -Dspring.application.admin.enabled=true -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.output.ansi.enabled=always -XX:TieredStopAtLevel=1 -Dcom.sun.management.jmxremote -Dfile.encoding=windows-1252 -Duser.country=FR -Duser.language=fr -Duser.variant priam.datasubject.PriamDataSubjectServiceApplication
+Command Line: -Dij.spring.boot.application.process=8c3438af-0704-4f5c-b7b2-125d420e9312 -Dmanagement.endpoints.jmx.exposure.include=* -Dspring.application.admin.enabled=true -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.output.ansi.enabled=always -XX:TieredStopAtLevel=1 -Dcom.sun.management.jmxremote -Dfile.encoding=windows-1252 -Duser.country=FR -Duser.language=fr -Duser.variant priam.actor.PriamActorServiceApplication
 
 Host: Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz, 8 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.2913)
 Time: Wed Jun 14 09:25:50 2023 Paris, Madrid (heure duild 19041 (10.0.19041.2913) elapsed time: 317.748761 seconds (0d 0h 5m 17s)

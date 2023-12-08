@@ -1,10 +1,10 @@
-package priam.datasubject;
+package priam.actor;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PriamDataSubjectServiceApplicationTests {
+class PriamActorServiceApplicationTests {
 
     @Test
     void contextLoads() {
