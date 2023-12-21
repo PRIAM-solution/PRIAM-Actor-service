@@ -29,7 +29,7 @@ public class DataSubjectRestAPI {
         return dataSubjectService.findDataSubject(id);
     }
 
-   @GetMapping(path = "/DataSubject/ref:{idRef}")
+   @GetMapping(path = "/DataSubject/ref/{idRef}")
     public DataSubjectResponseDTO getDataSubjectByRef(@PathVariable String idRef) {
         return dataSubjectService.getDataSubjectByIdRef(idRef);
     }

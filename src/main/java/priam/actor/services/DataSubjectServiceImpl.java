@@ -46,7 +46,6 @@ public class DataSubjectServiceImpl implements DataSubjectService {
         DataSubject dataSubject = dataSubjectRepository.findById(idDataSubject).get();
         DataSubjectResponseDTO dataSubjectResponseDTO =
                 dataSubjectMapper.DataSubjectToDataSubjectResponseDTO(dataSubject);
-        System.out.println(dataSubject.getId());
         return dataSubjectResponseDTO;
     }
 

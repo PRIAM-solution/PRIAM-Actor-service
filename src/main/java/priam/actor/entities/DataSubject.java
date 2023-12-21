@@ -23,7 +23,7 @@ public class DataSubject {
     private String password;
     private int age;
 
-    @JsonBackReference
+    @JsonBackReference(value = "dataSubject_list")
     @ManyToOne
     private DSCategory dsCategory;
 }

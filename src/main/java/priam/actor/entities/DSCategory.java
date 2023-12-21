@@ -20,7 +20,7 @@ public class DSCategory {
     //String is temporary
     private String locationId;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "dataSubject_list")
     @OneToMany(mappedBy ="dsCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<DataSubject> dataSubjects;
 }
