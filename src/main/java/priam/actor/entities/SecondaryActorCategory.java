@@ -20,5 +20,5 @@ public class SecondaryActorCategory {
 
     @JsonManagedReference
     @OneToMany(mappedBy ="secondaryActorCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Collection<DataSubject> secondaryActors;
+    private Collection<SecondaryActor> secondaryActors;
 }
