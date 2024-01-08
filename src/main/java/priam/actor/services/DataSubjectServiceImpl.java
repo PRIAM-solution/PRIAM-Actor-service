@@ -14,6 +14,8 @@ import priam.actor.repositories.DataSubjectRepository;
 
 import javax.annotation.Generated;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Generated(
         value = "org.mapstruct.ap.MappingProcessor",
@@ -68,6 +70,16 @@ public class DataSubjectServiceImpl implements DataSubjectService {
         DSCategory dsCategory = dsCategoryMapper.DSCategoryResponseDTOToDSCategory(dsCategoryRequestDTO);
         DSCategory result = dsCategoryRepository.save(dsCategory);
         return dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(result);
+    }
+
+    @Override
+    public List<DSCategoryResponseDTO> getAllDataSubjectCategories() {
+        List<DSCategory> result = dsCategoryRepository.findAll();
+        List<DSCategoryResponseDTO> response = new ArrayList<>();
+        result.forEach(dsc -> {
+            response.add(dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(dsc));
+        });
+        return response;
     }
 
     @Override

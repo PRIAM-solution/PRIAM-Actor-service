@@ -8,6 +8,8 @@ import priam.actor.dto.DataSubjectResponseDTO;
 import priam.actor.mappers.DataSubjectMapper;
 import priam.actor.services.DataSubjectService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,11 +36,16 @@ public class DataSubjectRestAPI {
         return dataSubjectService.getDataSubjectByIdRef(idRef);
     }
 
-    @PostMapping(path = "/DSCategory")
+    @PostMapping(path = "/actor/DataSubjectCategory")
     public DSCategoryResponseDTO createDSCategory(@RequestBody DSCategoryRequestDTO dSCategoryRequestDTO) {
         return dataSubjectService.saveDSCategory(dSCategoryRequestDTO);
     }
-    @GetMapping(path = "/DSCategory/{dscId}")
+    @GetMapping(path = "/actor/DataSubjectCategories")
+    public List<DSCategoryResponseDTO> getAllDSCategories() {
+        return dataSubjectService.getAllDataSubjectCategories();
+    }
+
+    @GetMapping(path = "/actor/DataSubjectCategory/{dscId}")
     public DSCategoryResponseDTO getDSCategoryById(@PathVariable int dscId) {
         return dataSubjectService.getDataSubjectCategoryById(dscId);
     }
