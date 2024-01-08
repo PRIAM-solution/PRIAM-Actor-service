@@ -1,7 +1,9 @@
 package priam.actor.services;
 
 import org.springframework.stereotype.Service;
+import priam.actor.dto.DSCategoryRequestDTO;
 import priam.actor.dto.DSCategoryResponseDTO;
+import priam.actor.dto.DataSubjectRequestDTO;
 import priam.actor.dto.DataSubjectResponseDTO;
 import priam.actor.entities.DSCategory;
 import priam.actor.entities.DataSubject;
@@ -34,11 +36,16 @@ public class DataSubjectServiceImpl implements DataSubjectService {
     }
 
     @Override
+    public DataSubjectResponseDTO saveDataSubject(DataSubjectRequestDTO dataSubjectRequestDTO) {
+        DataSubject dataSubject = dataSubjectMapper.DataSubjectRequestDTOToDataSubject(dataSubjectRequestDTO);
+        DataSubject result = dataSubjectRepository.save(dataSubject);
+        return dataSubjectMapper.DataSubjectToDataSubjectResponseDTO(result);
+    }
+    @Override
     public DataSubjectResponseDTO findDataSubject(int idDataSubject) {
         DataSubject dataSubject = dataSubjectRepository.findById(idDataSubject).get();
         DataSubjectResponseDTO dataSubjectResponseDTO =
                 dataSubjectMapper.DataSubjectToDataSubjectResponseDTO(dataSubject);
-        System.out.println(dataSubject.getId());
         return dataSubjectResponseDTO;
     }
 
@@ -54,6 +61,13 @@ public class DataSubjectServiceImpl implements DataSubjectService {
     public int getDataSubjectIdByIdRef(String idRef) {
         DataSubject dataSubject = dataSubjectRepository.findDataSubjectByIdRef(idRef);
         return dataSubject.getId();
+    }
+
+    @Override
+    public DSCategoryResponseDTO saveDSCategory(DSCategoryRequestDTO dsCategoryRequestDTO) {
+        DSCategory dsCategory = dsCategoryMapper.DSCategoryResponseDTOToDSCategory(dsCategoryRequestDTO);
+        DSCategory result = dsCategoryRepository.save(dsCategory);
+        return dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(result);
     }
 
     @Override
