@@ -11,17 +11,17 @@ import java.util.Collection;
 @NoArgsConstructor
 @Entity
 @lombok.Data
-public class DSCategory {
+public class DataSubjectCategory {
     @Id
-    private int dscId;
+    private int dataSubjectCategoryId;
 
-    private String dscName;
+    private String dataSubjectCategoryName;
 
     //String is temporary
     private String locationId;
 
     @JsonManagedReference(value = "dataSubject_list")
-    @OneToMany(mappedBy ="dsCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="dataSubjectCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<DataSubject> dataSubjects;
 }
 

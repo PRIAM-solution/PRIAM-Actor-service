@@ -15,15 +15,12 @@ import javax.persistence.Table;
 @lombok.Data
 @Table(name = "data_subject")
 public class DataSubject {
-
     @Id
-    private int id;
-    private String idRef;
-    private String username;
-    private String password;
+    private int dataSubjectId;
+    private String referenceId;
     private int age;
 
     @JsonBackReference(value = "dataSubject_list")
     @ManyToOne
-    private DSCategory dsCategory;
+    private DataSubjectCategory dataSubjectCategory;
 }

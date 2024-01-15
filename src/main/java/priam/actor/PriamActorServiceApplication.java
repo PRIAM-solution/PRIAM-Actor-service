@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import priam.actor.repositories.DSCategoryRepository;
+import priam.actor.repositories.DataSubjectCategoryRepository;
 import priam.actor.repositories.DataSubjectRepository;
 
 @SpringBootApplication
@@ -15,7 +15,7 @@ public class PriamActorServiceApplication {
     }
 
     @Bean
-    CommandLineRunner start(DataSubjectRepository dataSubjectRepository, DSCategoryRepository dsCategoryRepository) {
+    CommandLineRunner start(DataSubjectRepository dataSubjectRepository, DataSubjectCategoryRepository dataSubjectCategoryRepository) {
         return args -> {
 
         };

@@ -8,10 +8,8 @@ import priam.actor.entities.DataSubject;
 
 @Mapper(componentModel = "spring")
 public interface DataSubjectMapper {
-    @Mapping(target = "dscId", source = "dataSubject.dsCategory.dscId")
-    @Mapping(target = "dscName", source = "dataSubject.dsCategory.dscName")
+
     DataSubjectResponseDTO DataSubjectToDataSubjectResponseDTO(DataSubject dataSubject);
 
-    @Mapping(target = "dsCategory.dscId", source = "dataSubjectRequestDTO.dscId")
     DataSubject DataSubjectRequestDTOToDataSubject(DataSubjectRequestDTO dataSubjectRequestDTO);
 }

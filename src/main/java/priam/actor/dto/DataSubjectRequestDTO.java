@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @lombok.Data
 public class DataSubjectRequestDTO {
-
-    private int id;
+    private int dataSubjectId;
+    private String referenceId;
     private int age;
-    private String idRef;
-    private String username;
-    private String password;
-    private int dscId;
+    private int dataSubjectCategoryId;
 }
