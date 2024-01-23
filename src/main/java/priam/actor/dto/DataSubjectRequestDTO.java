@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @lombok.Data
 public class DataSubjectRequestDTO {
 
-    private int id;
+    private int dataSubjectId;
     private int age;
     private String idRef;
     private String username;
     private String password;
-    private int dscId;
+    private int dataSubjectCategoryId;
 }

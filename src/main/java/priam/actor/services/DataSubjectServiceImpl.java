@@ -1,15 +1,15 @@
 package priam.actor.services;
 
 import org.springframework.stereotype.Service;
-import priam.actor.dto.DSCategoryRequestDTO;
-import priam.actor.dto.DSCategoryResponseDTO;
+import priam.actor.dto.DataSubjectCategoryRequestDTO;
+import priam.actor.dto.DataSubjectCategoryResponseDTO;
 import priam.actor.dto.DataSubjectRequestDTO;
 import priam.actor.dto.DataSubjectResponseDTO;
-import priam.actor.entities.DSCategory;
+import priam.actor.entities.DataSubjectCategory;
 import priam.actor.entities.DataSubject;
-import priam.actor.mappers.DSCategoryMapper;
+import priam.actor.mappers.DataSubjectCategoryMapper;
 import priam.actor.mappers.DataSubjectMapper;
-import priam.actor.repositories.DSCategoryRepository;
+import priam.actor.repositories.DataSubjectCategoryRepository;
 import priam.actor.repositories.DataSubjectRepository;
 
 import javax.annotation.Generated;
@@ -25,16 +25,16 @@ import java.util.List;
 @Transactional
 public class DataSubjectServiceImpl implements DataSubjectService {
     final DataSubjectRepository dataSubjectRepository;
-    final DSCategoryRepository dsCategoryRepository;
+    final DataSubjectCategoryRepository dataSubjectCategoryRepository;
     final DataSubjectMapper dataSubjectMapper;
 
-    final DSCategoryMapper dsCategoryMapper;
+    final DataSubjectCategoryMapper dataSubjectCategoryMapper;
 
-    public DataSubjectServiceImpl(DataSubjectRepository dataSubjectRepository, DSCategoryRepository dsCategoryRepository, DataSubjectMapper dataSubjectMapper, DSCategoryMapper dsCategoryMapper) {
+    public DataSubjectServiceImpl(DataSubjectRepository dataSubjectRepository, DataSubjectCategoryRepository dataSubjectCategoryRepository, DataSubjectMapper dataSubjectMapper, DataSubjectCategoryMapper dataSubjectCategoryMapper) {
         this.dataSubjectRepository = dataSubjectRepository;
-        this.dsCategoryRepository = dsCategoryRepository;
+        this.dataSubjectCategoryRepository = dataSubjectCategoryRepository;
         this.dataSubjectMapper = dataSubjectMapper;
-        this.dsCategoryMapper = dsCategoryMapper;
+        this.dataSubjectCategoryMapper = dataSubjectCategoryMapper;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class DataSubjectServiceImpl implements DataSubjectService {
         return dataSubjectMapper.DataSubjectToDataSubjectResponseDTO(result);
     }
     @Override
-    public DataSubjectResponseDTO findDataSubject(int idDataSubject) {
-        DataSubject dataSubject = dataSubjectRepository.findById(idDataSubject).get();
+    public DataSubjectResponseDTO findDataSubject(int dataSubjectId) {
+        DataSubject dataSubject = dataSubjectRepository.findById(dataSubjectId).get();
         DataSubjectResponseDTO dataSubjectResponseDTO =
                 dataSubjectMapper.DataSubjectToDataSubjectResponseDTO(dataSubject);
         return dataSubjectResponseDTO;
@@ -62,33 +62,33 @@ public class DataSubjectServiceImpl implements DataSubjectService {
     @Override
     public int getDataSubjectIdByIdRef(String idRef) {
         DataSubject dataSubject = dataSubjectRepository.findDataSubjectByIdRef(idRef);
-        return dataSubject.getId();
+        return dataSubject.getDataSubjectId();
     }
 
     @Override
-    public DSCategoryResponseDTO saveDSCategory(DSCategoryRequestDTO dsCategoryRequestDTO) {
-        DSCategory dsCategory = dsCategoryMapper.DSCategoryResponseDTOToDSCategory(dsCategoryRequestDTO);
-        DSCategory result = dsCategoryRepository.save(dsCategory);
-        return dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(result);
+    public DataSubjectCategoryResponseDTO saveDataSubjectCategory(DataSubjectCategoryRequestDTO dataSubjectCategoryRequestDTO) {
+        DataSubjectCategory dataSubjectCategory = dataSubjectCategoryMapper.DataSubjectCategoryResponseDTOToDataSubjectCategory(dataSubjectCategoryRequestDTO);
+        DataSubjectCategory result = dataSubjectCategoryRepository.save(dataSubjectCategory);
+        return dataSubjectCategoryMapper.DataSubjectCategoryToDataSubjectCategoryResponseDTO(result);
     }
 
     @Override
-    public List<DSCategoryResponseDTO> getAllDataSubjectCategories() {
-        List<DSCategory> result = dsCategoryRepository.findAll();
-        List<DSCategoryResponseDTO> response = new ArrayList<>();
+    public List<DataSubjectCategoryResponseDTO> getAllDataSubjectCategories() {
+        List<DataSubjectCategory> result = dataSubjectCategoryRepository.findAll();
+        List<DataSubjectCategoryResponseDTO> response = new ArrayList<>();
         result.forEach(dsc -> {
-            response.add(dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(dsc));
+            response.add(dataSubjectCategoryMapper.DataSubjectCategoryToDataSubjectCategoryResponseDTO(dsc));
         });
         return response;
     }
 
     @Override
-    public DSCategoryResponseDTO getDataSubjectCategoryById(int dscId) {
-        DSCategory dsCategory = dsCategoryRepository.findDSCategoryByDscId(dscId);
-        DSCategoryResponseDTO dsCategoryResponseDTO =
-                dsCategoryMapper.DSCategoryToDSCategoryResponseDTO(dsCategory);
+    public DataSubjectCategoryResponseDTO getDataSubjectCategoryById(int dataSubjectCategoryId) {
+        DataSubjectCategory dataSubjectCategory = dataSubjectCategoryRepository.findDataSubjectCategoryByDataSubjectCategoryId(dataSubjectCategoryId);
+        DataSubjectCategoryResponseDTO dataSubjectCategoryResponseDTO =
+                dataSubjectCategoryMapper.DataSubjectCategoryToDataSubjectCategoryResponseDTO(dataSubjectCategory);
 
-        return dsCategoryResponseDTO;
+        return dataSubjectCategoryResponseDTO;
     }
 
 }

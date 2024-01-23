@@ -13,11 +13,11 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @lombok.Data
-@Table(name = "data_subject")
+@Table(name = "DataSubject")
 public class DataSubject {
 
     @Id
-    private int id;
+    private int dataSubjectId;
     private String idRef;
     private String username;
     private String password;
@@ -25,5 +25,5 @@ public class DataSubject {
 
     @JsonBackReference(value = "dataSubject_list")
     @ManyToOne
-    private DSCategory dsCategory;
+    private DataSubjectCategory dataSubjectCategory;
 }
