@@ -26,9 +26,6 @@ public class SecondaryActor {
     @ManyToOne
     private Country country;
 
-    private String username;
-    private String password;
-
     @JsonBackReference
     @ManyToOne
     private SecondaryActorCategory secondaryActorCategory;
