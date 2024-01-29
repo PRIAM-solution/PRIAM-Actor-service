@@ -11,8 +11,10 @@ import java.util.Collection;
 @NoArgsConstructor
 @Entity
 @lombok.Data
+@Table(name = "DataSubjectCategory")
 public class DataSubjectCategory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dataSubjectCategoryId;
 
     private String dataSubjectCategoryName;
@@ -24,4 +26,3 @@ public class DataSubjectCategory {
     @OneToMany(mappedBy ="dataSubjectCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<DataSubject> dataSubjects;
 }
-

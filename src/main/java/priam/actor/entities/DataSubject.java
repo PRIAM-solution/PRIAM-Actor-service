@@ -4,20 +4,18 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @lombok.Data
-@Table(name = "data_subject")
+@Table(name = "DataSubject")
 public class DataSubject {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dataSubjectId;
-    private String referenceId;
+    private String idRef;
     private int age;
 
     @JsonBackReference(value = "dataSubject_list")

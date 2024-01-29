@@ -9,7 +9,10 @@ import priam.actor.entities.DataSubjectCategory;
 @lombok.Data
 public class DataSubjectResponseDTO {
     private int dataSubjectId;
-    private String referenceId;
     private int age;
-    private DataSubjectCategory dataSubjectCategory;
+    private String idRef;
+    private String username;
+    private String password;
+    private int dataSubjectCategoryId;
+    private String dataSubjectCategoryName;
 }

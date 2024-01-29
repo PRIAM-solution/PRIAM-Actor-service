@@ -1,8 +1,8 @@
 package priam.actor.web;
 
 import org.springframework.web.bind.annotation.*;
-import priam.actor.dto.DSCategoryRequestDTO;
-import priam.actor.dto.DSCategoryResponseDTO;
+import priam.actor.dto.DataSubjectCategoryRequestDTO;
+import priam.actor.dto.DataSubjectCategoryResponseDTO;
 import priam.actor.dto.DataSubjectRequestDTO;
 import priam.actor.dto.DataSubjectResponseDTO;
 import priam.actor.mappers.DataSubjectMapper;
@@ -26,27 +26,29 @@ public class DataSubjectRestAPI {
     public DataSubjectResponseDTO createDataSubject(@RequestBody DataSubjectRequestDTO dataSubjectRequestDTO) {
         return dataSubjectService.saveDataSubject(dataSubjectRequestDTO);
     }
-    @GetMapping(path = "/DataSubject/{id}")
-    public DataSubjectResponseDTO getDataSubjectId(@PathVariable int id) {
-        return dataSubjectService.findDataSubject(id);
+
+    @GetMapping(path = "/DataSubject/{dataSubjectId}")
+    public DataSubjectResponseDTO getDataSubjectId(@PathVariable int dataSubjectId) {
+        return dataSubjectService.findDataSubject(dataSubjectId);
     }
 
-   @GetMapping(path = "/DataSubject/ref/{idRef}")
+    @GetMapping(path = "/DataSubject/ref/{idRef}")
     public DataSubjectResponseDTO getDataSubjectByRef(@PathVariable String idRef) {
         return dataSubjectService.getDataSubjectByIdRef(idRef);
     }
 
     @PostMapping(path = "/actor/DataSubjectCategory")
-    public DSCategoryResponseDTO createDSCategory(@RequestBody DSCategoryRequestDTO dSCategoryRequestDTO) {
-        return dataSubjectService.saveDSCategory(dSCategoryRequestDTO);
+    public DataSubjectCategoryResponseDTO createDataSubjectCategory(@RequestBody DataSubjectCategoryRequestDTO dSCategoryRequestDTO) {
+        return dataSubjectService.saveDataSubjectCategory(dSCategoryRequestDTO);
     }
+
     @GetMapping(path = "/actor/DataSubjectCategories")
-    public List<DSCategoryResponseDTO> getAllDSCategories() {
+    public List<DataSubjectCategoryResponseDTO> getAllDataSubjectCategories() {
         return dataSubjectService.getAllDataSubjectCategories();
     }
 
-    @GetMapping(path = "/actor/DataSubjectCategory/{dscId}")
-    public DSCategoryResponseDTO getDSCategoryById(@PathVariable int dscId) {
-        return dataSubjectService.getDataSubjectCategoryById(dscId);
+    @GetMapping(path = "/actor/DataSubjectCategory/{dataSubjectCategoryId}")
+    public DataSubjectCategoryResponseDTO getDataSubjectCategoryById(@PathVariable int dataSubjectCategoryId) {
+        return dataSubjectService.getDataSubjectCategoryById(dataSubjectCategoryId);
     }
 }

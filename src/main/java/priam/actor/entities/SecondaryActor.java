@@ -10,19 +10,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @lombok.Data
-@Table(name = "secondary_actor")
+@Table(name = "SecondaryActor")
 public class SecondaryActor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String email;
-    private String phone;
-    private String address;
+    private int secondaryActorId;
+    private SecondaryActorType secondaryActorType;
+    private String secondaryActorName;
+    private String secondaryActorAddress; //TODO: Change type to Address
+    private String secondaryActorPhone;
+    private String secondaryActorEmail;
     private String safeguard;
     private SafeguardType safeguardType;
-    private String username;
-    private String password;
+
+    @ManyToOne
+    private Country country;
 
     @JsonBackReference
     @ManyToOne

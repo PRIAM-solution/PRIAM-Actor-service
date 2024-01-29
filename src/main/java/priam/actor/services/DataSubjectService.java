@@ -1,7 +1,7 @@
 package priam.actor.services;
 
-import priam.actor.dto.DSCategoryRequestDTO;
-import priam.actor.dto.DSCategoryResponseDTO;
+import priam.actor.dto.DataSubjectCategoryRequestDTO;
+import priam.actor.dto.DataSubjectCategoryResponseDTO;
 import priam.actor.dto.DataSubjectRequestDTO;
 import priam.actor.dto.DataSubjectResponseDTO;
 
@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface DataSubjectService {
     DataSubjectResponseDTO saveDataSubject(DataSubjectRequestDTO dataSubjectRequestDTO);
-    DataSubjectResponseDTO findDataSubject(int idDataSubject);
-    int getDataSubjectIdByIdRef(String idref);
-    DataSubjectResponseDTO getDataSubjectByIdRef(String idref);
-    DSCategoryResponseDTO saveDSCategory(DSCategoryRequestDTO dsCategoryRequestDTO);
-    List<DSCategoryResponseDTO> getAllDataSubjectCategories();
-    DSCategoryResponseDTO getDataSubjectCategoryById(int dscId);
+    DataSubjectResponseDTO findDataSubject(int dataSubjectId);
+    int getDataSubjectIdByIdRef(String idRef);
+    DataSubjectResponseDTO getDataSubjectByIdRef(String idRef);
+    DataSubjectCategoryResponseDTO saveDataSubjectCategory(DataSubjectCategoryRequestDTO dataSubjectCategoryRequestDTO);
+    List<DataSubjectCategoryResponseDTO> getAllDataSubjectCategories();
+    DataSubjectCategoryResponseDTO getDataSubjectCategoryById(int dataSubjectCategoryId);
 }

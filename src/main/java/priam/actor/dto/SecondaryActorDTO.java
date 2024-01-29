@@ -8,14 +8,15 @@ import priam.actor.entities.SafeguardType;
 @NoArgsConstructor
 @lombok.Data
 public class SecondaryActorDTO {
-    private int id;
-    private String name;
-    private String email;
-    private String phone;
-    private String address;
-    private String country;
+    private int secondaryActorId;
+    private String secondaryActorName;
+    private String secondaryActorEmail;
+    private String secondaryActorPhone;
+    private String secondaryActorAddress; //TODO: change to Address
+    private String country; //TODO: change to Country
     private String safeguard;
     private SafeguardType safeguardType;
+
     private String username;
     private String password;
 
