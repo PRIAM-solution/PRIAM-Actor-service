@@ -1,5 +1,6 @@
 package priam.actor.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import priam.actor.dto.DataSubjectCategoryRequestDTO;
 import priam.actor.dto.DataSubjectCategoryResponseDTO;
@@ -8,6 +9,8 @@ import priam.actor.dto.DataSubjectResponseDTO;
 import priam.actor.mappers.DataSubjectMapper;
 import priam.actor.services.DataSubjectService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -15,11 +18,28 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DataSubjectRestAPI {
 
+    @Autowired
+    HttpServletRequest request;
     private DataSubjectService dataSubjectService;
     private DataSubjectMapper dataSubjectMapper;
 
     public DataSubjectRestAPI(DataSubjectService dataSubjectService) {
         this.dataSubjectService = dataSubjectService;
+    }
+
+    /**
+     * Adds the original URL of the request to the session.
+     * This method is annotated with {@literal @}ModelAttribute, which ensures
+     * that it is invoked before handling any request mapping method in this
+     * controller. It sets the 'originalUrl' attribute in the session to the
+     * request's URI. This attribute can be used to track the original URL
+     * requested by the user before any redirection or processing occurs.
+     *
+     * @param session the HTTP session to which the original URL attribute is added
+     */
+    @ModelAttribute
+    public void addOriginalUrlToSession(HttpSession session) {
+        session.setAttribute("originalUrl", request.getRequestURI());
     }
 
     /**
@@ -68,6 +88,7 @@ public class DataSubjectRestAPI {
 
     /**
      * Retrieve all the data subject category in a list of DataSubjectCategoryResponseDTO objects
+     *
      * @return A list of DataSubjectCategoryResponseDTO objects
      */
     @GetMapping(path = "/actor/DataSubjectCategories")
@@ -77,6 +98,7 @@ public class DataSubjectRestAPI {
 
     /**
      * Retrieve a DataSubjectCategoryResponseDTO object based on a data subject category ID
+     *
      * @param dataSubjectCategoryId The data subject category ID
      * @return A DataSubjectCategoryResponseDTO object
      */
