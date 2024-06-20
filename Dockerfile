@@ -28,7 +28,7 @@ EXPOSE 8082
 WORKDIR /app
 
 # Update + installation de la JRE-17
-RUN apt update && apt upgrade -y && apt install openjdk-${JRE_VERSION}-jre -y
+RUN apt update && apt upgrade -y && apt install openjdk-${JRE_VERSION}-jre curl -y
 
 # On copie les .jar qu'on a build (todo: prendre auto que la version sans le "-plain")
 COPY --from=builder /app/build/libs/PRIAM-Actor-service-${APP_VERSION}.jar .
