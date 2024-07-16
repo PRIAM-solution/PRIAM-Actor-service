@@ -1,14 +1,21 @@
 package priam.actor.web;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import priam.actor.dto.DataSubjectCategoryRequestDTO;
 import priam.actor.dto.DataSubjectCategoryResponseDTO;
 import priam.actor.dto.DataSubjectRequestDTO;
 import priam.actor.dto.DataSubjectResponseDTO;
 import priam.actor.mappers.DataSubjectMapper;
 import priam.actor.services.DataSubjectService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -42,6 +49,11 @@ public class DataSubjectRestAPI {
     @GetMapping(path = "/DataSubject/{dataSubjectId}")
     public DataSubjectResponseDTO getDataSubjectId(@PathVariable int dataSubjectId) {
         return dataSubjectService.findDataSubject(dataSubjectId);
+    }
+
+    @GetMapping(path = "/DataSubjectId/{idRef}")
+    public int getDataSubjectIdByIdRef(@PathVariable String idRef) {
+        return dataSubjectService.getDataSubjectIdByIdRef(idRef);
     }
 
     /**
